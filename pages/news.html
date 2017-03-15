@@ -1,0 +1,67 @@
+<div class="pageTop">
+  <div class="container news">
+    <div class="row newsItemRow">
+    </div>
+  </div>
+  <script>
+    $(document).ready(function(){
+      apiCall();
+    });
+
+    function apiCall() {
+           var params = {
+               // Request parameters
+               "q": "car",
+               "q": "bike",
+               "count": "10",
+               "offset": "0",
+               "mkt": "en-us",
+               "safeSearch": "Moderate",
+           };
+
+           $.ajax({
+               url: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?" + $.param(params),
+               beforeSend: function(xhrObj){
+                   // Request headers
+                   xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","3b41557af1e7485398d69573b36b4f76");
+               },
+               type: "GET",
+               // Request body
+               data: "{body}",
+           })
+           .done(function(data) {
+              //  alert(data.value[0].name);
+               insertNews(data.value);
+           })
+           .fail(function() {
+               alert("error");
+           });
+    };
+
+    function insertNews(newsArray){
+      $.each(newsArray, function(index,eachNews) {
+        var className="col-xs-12 col-sm-12 col-md-4 newsItem";
+        var idName="newsPlaceholder"+index;
+        $('.newsItemRow').append("<div class='"+className+"'><div id='"+idName+"'></div></div>");
+        $("#newsPlaceholder"+index).load("newsItem.html",function(){
+          $("#newsPlaceholder"+index+" .newsImg").attr("src",newsArray[index].image.thumbnail.contentUrl);
+          $("#newsPlaceholder"+index+" .newsName").replaceWith(function(){
+            return "<h3>" + newsArray[index].name + "</h3>";
+          });
+          $("#newsPlaceholder"+index+" .newsDesc").replaceWith(function(){
+            return "<p>"+newsArray[index].description+"</p>";
+          });
+          $("#newsPlaceholder"+index+" .learnMore").attr("href",newsArray[index].url);
+          $("#newsPlaceholder"+index+" .newsDetail").hide();
+          $("#newsPlaceholder"+index+" .readMore").click(function(){
+            $(".readMoreButton").show();
+            $(".newsDetail").hide();
+            $("#newsPlaceholder"+index+" .readMoreButton").hide();
+            $("#newsPlaceholder"+index+" .newsDetail").show();
+          });
+
+        });
+      });
+    };
+  </script>
+</div>

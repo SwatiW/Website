@@ -1,0 +1,25 @@
+.carousel{
+    background: #2f4357;
+    margin-top: 20px;
+}
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+}
+.bs-example{
+	margin: 20px;
+  margin-top: 70px;
+}
+
+.carousel .item img{
+  height:500px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .carousel .item img{
+    height:350px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

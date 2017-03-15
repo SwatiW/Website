@@ -1,0 +1,45 @@
+.news{
+  background-color: #808080;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.readMore{
+  margin-bottom: 10px;
+}
+
+.newsImg{
+  height:10em;
+  min-width: 40%;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #CCCCCC;
+  border-radius: 2px;
+  margin-bottom: 10px;
+
+}
+
+.newsName{
+  /*text-align: center;*/
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.thumbnail{
+  margin-bottom: 15px;
+  height: 30em;
+  overflow: scroll;
+}
+
+.caption{
+  height: 10em;
+  margin-bottom: 20px;
+
+}
+
+
+
+
+/*.thumbnail{
+  overflow:hidden;
+}*/
