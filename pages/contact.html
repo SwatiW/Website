@@ -1,16 +1,55 @@
 <div class="pageTop">
+  <div class="container contact">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <label for="usr" id="sendmessage">Send us a message:</label>
+      <input type="text" class="form-control"  id="name" placeholder="Enter your Name">
+      <input type="text" class="form-control"  id="email" placeholder="Enter Email id">
+      <!-- <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">300</label><br> -->
+      <textarea class="form-control" id="msg" placeholder="Enter your message" maxlength="300" onkeyup=countChar(this)> </textarea>
+      <div id="textCounter" style="font:15px Arial;">300 Characters limit</div>
+      <button type="button" class="btn btn-primary" id="send">Send</button>
+    </div>
 
+    <div class="col-xs-12 col-md-6">
+      <label for="usr" id="address">Address:</label>
+      <p>National Institute of Technology
+      <br>
+      Warangal-Hyderabad highway
+      <br>
+      Warangal-506004</p>
+      <br>
+      <label for="usr" id="contactno">Contact No:</label>
+      <p>7687658275<p>
+    </div>
+
+  </div>
+  </div>
   <div>
-    
+
   </div>
 
 
 
 
   <script>
-    $(document).ready(function(){
-
+  $(document).ready(function() {
+        $('#msg').on('input propertychange', function() {
+            CharLimit(this, 300);
+        });
     });
+
+    function CharLimit(input, maxChar) {
+        var len = $(input).val().length;
+        $('#textCounter').text(maxChar - len + ' characters remaining');
+
+        if (len > maxChar) {
+            $(input).val($(input).val().substring(0, maxChar));
+            $('#textCounter').text(0 + ' characters remaining');
+        }
+    }
+
+    
   </script>
 
 </div>
