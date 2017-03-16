@@ -1,0 +1,36 @@
+.contact{
+  margin-top: 110px;
+  align-content: center;
+  /*margin: 10px 10px 10px 10px;*/
+  background-color:#CCCCCC;
+  padding: 10px 10px 10px 10px;
+  height: ;
+
+}
+
+#sendmessage{
+    margin-bottom: 10px;
+    font-size: 12;
+
+}
+
+#email{
+  margin-top: 10px;
+
+}
+#msg{
+  margin-top: 12px;
+  height: 100px;
+}
+#send{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#address{
+  margin-top: 10px;
+}
+
+#contactno{
+  margin-top:auto;
+}
