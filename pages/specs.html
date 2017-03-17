@@ -18,11 +18,17 @@ $(document).ready(function () {
       $("#specsPlaceholder"+index+" .specHeading").attr("href","#collapseOne"+index);
       $("#specsPlaceholder"+index+" #collapseOne").attr("id","collapseOne"+index);
 
-      for (key in vehicles[index]){
-        $('.specRow').append("<tr><td class='featureValue'>"+ key +"</td><td class='availValue'>"+ vehicles[index][key] +"</td></tr>");
-      }
-    })
-    });
+    
+     for( var key in eachVehicle) {
+        // console.log(index+key[indexKey] +":");
+        $("#specsPlaceholder"+index+" .specRow").append("<tr><td class='featureValue'>"+ key+"</td><td class='availValue'>"+ eachVehicle[key]+"</td></tr>");
+
+     }
+
+
   });
-  </script>
+
+});
+});
+</script>
 </div>
