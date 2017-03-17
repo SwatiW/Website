@@ -1,4 +1,47 @@
 <div class="pageTop">
+  <div class="container videos">
 
-  <h1>THSI IS VIDEOS</h1>
-</div>
+  </div>
+  <script>
+    $(document).ready(function(){
+      apiCallVideo();
+    });
+
+    function apiCallVideo() {
+      var params = {
+          // Request parameters
+          "q": "powerdrift",
+          "count": "10",
+          "offset": "0",
+          "mkt": "en-us",
+          "safeSearch": "Moderate",
+      };
+
+      $.ajax({
+          url: "https://api.cognitive.microsoft.com/bing/v5.0/videos/search?" + $.param(params),
+          beforeSend: function(xhrObj){
+              // Request headers
+              xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","3b41557af1e7485398d69573b36b4f76");
+          },
+          type: "GET",
+          // Request body
+          data: "{body}",
+      })
+      .done(function(data) {
+          insertVideos(data.value);
+      })
+      .fail(function() {
+          alert("error");
+      });
+  };
+
+    function insertVideos(videoArray){
+      $.each(videoArray, function(index,eachVideo) {
+        var idName="videoPlaceholder"+index;
+        $('.videos').append("<div class='row' id='"+idName+"'><div class='col-md-4 col-sm-12'>"+eachVideo.embedHtml+"</div><div class='col-md-offset-1 col-md-7 col-sm-12 videoName'><strong>"+eachVideo.name+"</div><div>"+eachVideo.description+"</div></div><hr>");
+        $("#videoPlaceholder"+index+" iframe").width($("#videoPlaceholder"+index+" iframe").parent().width());//attr("width","420px");
+        $("#videoPlaceholder"+index+" iframe").attr("height","315px");
+        $("#videoPlaceholder"+index+" iframe").attr("src",$("#videoPlaceholder"+index+" iframe").attr("src")+"?autoplay=0");
+      });
+    };
+  </script>
