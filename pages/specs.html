@@ -1,16 +1,28 @@
 <div class="pageTop">
-
-  <h1>THSI IS SPECS</h1>
+  <div class="container specs">
+    <div class="row specsItemRow">
+    </div>
+  </div>
 
 
 <script type="text/javascript">
-//$(document).ready(function () {
+$(document).ready(function () {
+  $.each(vehicles, function(index,eachVehicle) {
+    var className="col-xs-12 col-sm-12 col-md-12 specsItem";
+    var idName="specsPlaceholder"+index;
+    $('.specsItemRow').append("<div class='"+className+"'><div id='"+idName+"'></div></div>");
+    $("#specsPlaceholder"+index).load("spec_item.html",function(){
+      $("#specsPlaceholder"+index+" .specHeading").replaceWith(function(){
+        return "<a data-toggle='collapse' data-parent='#accordion' href='#collapseOne' class='specHeading'>" + eachVehicle.Name + "</a>";
+      });
+      $("#specsPlaceholder"+index+" .specHeading").attr("href","#collapseOne"+index);
+      $("#specsPlaceholder"+index+" #collapseOne").attr("id","collapseOne"+index);
 
-  $.getJSON("/home/swati/Desktop/carousel/JSON/specs.json", function(data) {
-    $.each(data, function (name, value) {
-      alert(data);
+      for (key in vehicles[index]){
+        $('.specRow').append("<tr><td class='featureValue'>"+ key +"</td><td class='availValue'>"+ vehicles[index][key] +"</td></tr>");
+      }
+    })
     });
   });
-//});
-</script>
+  </script>
 </div>

@@ -1,7 +1,7 @@
 
 var nav_load=function(){
   $("#nav-placeholder").load("nav.html");
-  $("#placeholder").load("videos.html");
+  $("#placeholder").load("home.html");
 
 
 };

@@ -12,3 +12,7 @@ body{
 .pageTop{
   margin-top: 60px;
 }
+
+#comName{
+  color: #fff;
+}
