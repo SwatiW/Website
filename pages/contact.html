@@ -37,6 +37,14 @@
         $('#msg').on('input propertychange', function() {
             CharLimit(this, 300);
         });
+
+        $("#send").click(function(){
+          var name=$("#name").val();
+          var email=$("#email").val();
+          var msg=$("#msg").val();
+          // alert(name+email+msg);
+          // sendEmail();
+        })
     });
 
     function CharLimit(input, maxChar) {
@@ -47,9 +55,19 @@
             $(input).val($(input).val().substring(0, maxChar));
             $('#textCounter').text(0 + ' characters remaining');
         }
-    }
+    };
 
-    
+    // function sendEmail(){
+    //   $.post("send_email.php", $("#contact_form").serialize(),function(result){
+    //   }
+    //   .done(function() {
+    //     alert( "success" );
+    //   })
+    //   .fail(function() {
+    //     alert( "error" );
+    //   });
+
+
   </script>
 
 </div>

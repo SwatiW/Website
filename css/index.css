@@ -13,6 +13,19 @@ body{
   margin-top: 60px;
 }
 
-#comName{
+/*navigation bar*/
+
+.navbar-inverse .navbar-brand{
   color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #33ff61;
+}
+.navbar-inverse .navbar-nav > .active > a {
+  color: #33ff61;
 }
